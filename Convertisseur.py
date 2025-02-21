@@ -4,8 +4,9 @@ from fpdf import FPDF
 # ✅ Nettoyage des caractères spéciaux
 def clean_text(text):
     if isinstance(text, str):
-        # return text.replace("?", "'").encode('utf-8', 'replace').decode('utf-8')ccc
-        return text.replace("?", "'blobbobo'").encode('latin-1', 'replace').decode('latin-1')
+        texte = text.replace("?", "'").encode('latin-1', 'replace').decode('latin-1')
+        texte = texte.replace("<br>","\n").encode('latin-1','replace').decode('latin-1')
+        return texte
     return str(text)
 
 # Dictionnaire de traduction des jours en français
