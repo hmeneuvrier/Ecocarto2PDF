@@ -4,8 +4,13 @@ from fpdf import FPDF
 # ✅ Nettoyage des caractères spéciaux
 def clean_text(text):
     if isinstance(text, str):
-        texte = text.replace("?", "'").encode('latin-1', 'replace').decode('latin-1')
+        texte = text.replace("’","'").encode('latin-1','replace').decode('latin-1')
+        texte = texte.replace("⋅","-").encode('latin-1','replace').decode('latin-1')
         texte = texte.replace("<br>","\n").encode('latin-1','replace').decode('latin-1')
+        texte = texte.replace("<b>","").encode('latin-1','replace').decode('latin-1')
+        texte = texte.replace("</b>","").encode('latin-1','replace').decode('latin-1')
+        texte = texte.replace("…","...").encode('latin-1','replace').decode('latin-1')
+        texte = texte.replace("\u22c5","-").encode('latin-1','replace').decode('latin-1')
         return texte
     return str(text)
 
